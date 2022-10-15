@@ -10,3 +10,14 @@ class ItemSerializer(serializers.ModelSerializer):
             'name',
             'price'
         ]
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = [
+            'phone number',
+            'full name',
+            'age',
+            'e-mail address'
+        ]
