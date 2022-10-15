@@ -28,10 +28,12 @@ class AutoBuy(models.Model):
         (DAILY, 'Daily')
     ]
 
+    id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     start_date = models.DateField(null=False)
     reminder_cycle = models.CharField(max_length = 3, choices=REMINDER_CHOICES, default=DAILY)
+    is_autobuy = models.BooleanField(default=True)
 
     class Meta:
         constraints = [

@@ -50,7 +50,7 @@ class AutoBuyList(generics.ListCreateAPIView):
 
 class AutoBuyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = AutoBuy.objects.all()
-    serializers_class = AutoBuySerializer
+    serializer_class = AutoBuySerializer
 
 
 def index(request):

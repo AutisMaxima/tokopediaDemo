@@ -7,5 +7,6 @@ urlpatterns = [
     path('products/<int:pk>/', ProductDetail.as_view()),
     path('customers/', CustomerList.as_view()),
     path('customers/<int:pk>', CustomerDetail.as_view()),
-    path('autobuy', AutoBuyList.as_view()),
+    path('autobuy/', AutoBuyList.as_view()),
+    path('autobuy/<int:pk>', AutoBuyDetail.as_view())
 ]

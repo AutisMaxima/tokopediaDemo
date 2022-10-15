@@ -29,8 +29,10 @@ class AutoBuySerializer(serializers.ModelSerializer):
     class Meta:
         model = AutoBuy
         fields = [
+            'id',
             'customer',
             'product',
             'start_date',
-            'reminder_cycle'
+            'reminder_cycle',
+            'is_autobuy'
         ]
