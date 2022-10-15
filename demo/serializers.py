@@ -2,13 +2,15 @@ from rest_framework import serializers
 from .models import *
 
 
-class ItemSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
+        model = Product
         fields = [
             'id',
-            'name',
-            'price'
+            'image_link',
+            'product_name',
+            'price',
+            'seller'
         ]
 
 
@@ -16,8 +18,19 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = [
-            'phone number',
-            'full name',
+            'phone_number',
+            'customer_name',
             'age',
-            'e-mail address'
+            'email_address'
+        ]
+
+
+class AutoBuySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AutoBuy
+        fields = [
+            'customer',
+            'product',
+            'start_date',
+            'reminder_cycle'
         ]

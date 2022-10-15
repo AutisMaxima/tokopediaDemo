@@ -5,20 +5,20 @@ from .models import *
 
 
 # Create your views here.
-class ItemList(generics.ListCreateAPIView):
-    serializer_class = ItemSerializer
+class ProductList(generics.ListCreateAPIView):
+    serializer_class = ProductSerializer
 
     def get_queryset(self):
-        queryset = Item.objects.all()
-        input_name = self.request.query_params.get('name')
+        queryset = Product.objects.all()
+        input_name = self.request.query_params.get('product_name')
         if input_name is not None:
-            queryset = queryset.filter(name__icontains = input_name)
+            queryset = queryset.filter(name__icontains=input_name)
         return queryset
 
 
-class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
 
 class CustomerList(generics.ListCreateAPIView):
@@ -28,13 +28,29 @@ class CustomerList(generics.ListCreateAPIView):
         queryset = Customer.objects.all()
         input_phone_number = self.request.query_params.get('phonenumber')
         if input_phone_number is not None:
-            queryset = queryset.filter(phone_number = input_phone_number)
+            queryset = queryset.filter(phone_number=input_phone_number)
         return queryset
 
 
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
+
+class AutoBuyList(generics.ListCreateAPIView):
+    serializer_class = AutoBuySerializer
+
+    def get_queryset(self):
+        queryset = AutoBuy.objects.all()
+        input_customer_name = self.request.query_params.get('customername')
+        if input_customer_name is not None:
+            queryset.filter(customer__full_name=input_customer_name)
+        return queryset
+
+
+class AutoBuyDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = AutoBuy.objects.all()
+    serializers_class = AutoBuySerializer
 
 
 def index(request):
