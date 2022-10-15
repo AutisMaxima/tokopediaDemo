@@ -8,3 +8,4 @@ class Item(models.Model):
     price = models.IntegerField(null=True)
 
 
+

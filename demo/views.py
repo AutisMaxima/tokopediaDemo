@@ -5,8 +5,12 @@ from .models import *
 
 
 # Create your views here.
+class ItemList(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
-class ItemView(generics.CreateAPIView):
+
+class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
